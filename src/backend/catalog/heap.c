@@ -1160,12 +1160,10 @@ BuildRelationDistributionNodes(List *nodes, int *numnodes)
 {
 	Oid *nodeoids;
 	ListCell *item;
-        int numdatanotes;
 	*numnodes = 0;
 
 	/* Allocate once enough space for OID array */	  
-        numdatanotes=list_length(nodes);
-        nodeoids = (Oid *) palloc0(numdatanotes*sizeof(Oid));
+	nodeoids = (Oid *) palloc0(list_length(nodes) * sizeof(Oid));
 
 	/* Do process for each node name */
 	foreach(item, nodes)
